@@ -4,94 +4,98 @@
     <meta charset="UTF-8" />
     <title>XX-XX-XX</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unknown64m3r.github.io/status.EX-OS/style.css">
+                           <!--"https://cdn.jsdelivr.net/gh/unknown64M3R/status.EX-OS@main/style.css"-->
   </head>
   <body>
     <!-- INTRO -->
     <div id="introScreen" class="page active">
       <div class="main-box intro-box" style="align-items:center;">
-       <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-       <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
-       <hr />
-       <div id="typewriter"></div>
-       <div id="introButtons" style="display:none; margin-top:10px;">
-          <button id="proceedBtn">PROCEED</button>
-       </div>
-       <hr />
-       <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
-      </div>
-    </div>
-  <!-- LOGIN -->
-  <div id="loginPage" class="page">
-    <div class="main-box login-box" style="align-items:center;">
-      <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-      <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
-      <hr />
-      <input type="text" id="codename" placeholder="Enter Codename" required />
-      <input type="text" id="idNumber" placeholder="Enter ID Number" required />
-      <button id="loginBtn" disabled>LOG IN</button>
-      <div class="error" id="errorMsg"></div>
-      <hr />
-     <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
-    </div>
-  </div>
-  <!-- DASHBOARD -->
-  <div id="mainMenu" class="page">
-    <div class="main-box menu-box">
-      <div class="menu-header">
-        <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-        <h2>DASHBOARD</h2>
+        <img src="https://unknown64m3r.github.io/status.EX-OS/logo.png" alt="Logo" />
+        <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
         <hr />
-        <p><strong>Codename:</strong> <span id="dashCodename"></span></p>
-        <p><strong>Rank:</strong> <span id="dashRank"></span></p>
-        <p><strong>Field:</strong> <span id="dashField"></span></p>
-        <p><strong>Status:</strong> <span id="dashStatus"></span></p>
-        <p><strong>Description:</strong> <span class="agent-description" id="dashDescription"></span></p>
-      </div>
-      <hr />
-      <div id="agentContainer" style="flex:1; overflow:auto; margin-top:10px;"></div>
-      <div class="menu-footer">
-        <div class="menu-left-buttons">
-          <button id="profileBtn">Profile</button>
-          <button id="missionBtn">Mission</button>
+        <div id="typewriter"></div>
+        <div id="introButtons" style="display:none; margin-top:10px;">
+         <button id="proceedBtn">PROCEED</button>
         </div>
-        <button id="logoutMain">Log Out</button>
+        <hr />
+        <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
       </div>
     </div>
-  </div>
-  <!-- PROFILE -->
-  <div id="profilePage" class="page">
-    <div class="main-box profile-box">
-      <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-      <h2>PROFILE</h2>
-      <hr />
-      <p><strong>Full Name:</strong> <span id="profileFullName"></span></p>
-      <p><strong>Birth Date:</strong> <span id="profileBirthDate"></span></p>
-      <p><strong>Gender:</strong> <span id="profileGender"></span></p>
-      <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-      <p><strong>Contact:</strong> <span id="profileContact"></span></p>
-      <p><strong>Address:</strong> <span id="profileAddress"></span></p>
-      <hr />
-      <div class="menu-left-buttons">
-        <button id="refreshProfile">Refresh</button>
-        <button onclick="showPage('mainMenu')">Back</button>
+    <!-- LOGIN -->
+    <div id="loginPage" class="page">
+      <div class="main-box login-box" style="align-items:center;">
+        <img src="https://unknown64m3r.github.io/status.EX-OS/logo.png" alt="Logo" />
+        <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
+        <hr />
+        <input type="text" id="codename" placeholder="Enter Codename" required />
+        <input type="text" id="idNumber" placeholder="Enter ID Number" required />
+        <button id="loginBtn" disabled>LOG IN</button>
+        <div class="error" id="errorMsg"></div>
+        <hr />
+        <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
       </div>
     </div>
-  </div>
-  <!-- MISSION -->
-  <div id="missionPage" class="page">
-    <div class="main-box mission-box">
-      <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-      <h2>MISSION STATUS</h2>
-      <hr />
-      <section class="mission-info" id="missionInfo"><p>Loading mission details...</p></section>
-      <hr />
-      <div class="menu-left-buttons">
-        <button id="refreshMission">Refresh</button>
-        <button onclick="showPage('mainMenu')">Back</button>
-     </div>
+    <!-- DASHBOARD -->
+    <div id="mainMenu" class="page">
+      <div class="main-box menu-box">
+        <div class="menu-header">
+          <img src="https://unknown64m3r.github.io/status.EX-OS/logo.png" alt="Logo" />
+          <h2>DASHBOARD</h2>
+          <hr />
+          <p><strong>Codename:</strong> <span id="dashCodename"></span></p>
+          <p><strong>Rank:</strong> <span id="dashRank"></span></p>
+          <p><strong>Field:</strong> <span id="dashField"></span></p>
+          <p><strong>Status:</strong> <span id="dashStatus"></span></p>
+          <p><strong>Description:</strong> <span class="agent-description" id="dashDescription"></span></p>
+        </div>
+        <hr />
+        <div id="agentContainer" style="flex:1; overflow:auto; margin-top:10px;"></div>
+        <div class="menu-footer">
+          <div class="menu-left-buttons">
+            <button id="profileBtn">Profile</button>
+            <button id="missionBtn">Mission</button>
+          </div>
+          <button id="logoutMain">Log Out</button>
+        </div>
+      </div>
     </div>
-  </div>
-  <script src="script.js"></script>
+    <!-- PROFILE -->
+    <div id="profilePage" class="page">
+      <div class="main-box profile-box">
+        <img src="https://unknown64m3r.github.io/status.EX-OS/logo.png" alt="Logo" />
+        <h2>PROFILE</h2>
+        <hr />
+        <p><strong>Full Name:</strong> <span id="profileFullName"></span></p>
+        <p><strong>Birth Date:</strong> <span id="profileBirthDate"></span></p>
+        <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        <p><strong>Contact:</strong> <span id="profileContact"></span></p>
+        <p><strong>Address:</strong> <span id="profileAddress"></span></p>
+        <hr />
+        <div class="menu-left-buttons">
+          <button id="refreshProfile">Refresh</button>
+          <button onclick="showPage('mainMenu')">Back</button>
+        </div>
+       </div>
+    </div>
+    <!-- MISSION -->
+    <div id="missionPage" class="page">
+      <div class="main-box mission-box">
+        <img src="https://unknown64m3r.github.io/status.EX-OS/logo.png" alt="Logo" />
+        <h2>MISSION STATUS</h2>
+        <hr />
+        <section class="mission-info" id="missionInfo">
+          <p>Loading mission details...</p>
+        </section>
+          <hr />
+        <div class="menu-left-buttons">
+          <button id="refreshMission">Refresh</button>
+          <button onclick="showPage('mainMenu')">Back</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/unknown64M3R/status.EX-OS@main/script.js"></script>
+            <!--"https://unknown64m3r.github.io/status.EX-OS/script.js"-->
   </body>
 </html>
