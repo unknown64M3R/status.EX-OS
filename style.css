@@ -1,0 +1,53 @@
+:root {
+  --bg:#111; --text-light:#bbb; --text-muted:#666; --btn-bg:#222; --btn-border:#555;
+  --btn-hover-bg:#555; --btn-hover-color:#f33; --border-color:#333; --font-family:'Share Tech Mono', monospace;
+  --error-color:#f33; --success-color:#0f0; --primary-color:#222; --highlight-color:#0f0;
+}
+*, *::after, *::before { box-sizing:border-box; }
+html, body { margin:0; padding:0; background-color:var(--bg); color:#fff; font-family:var(--font-family); overflow:hidden; height:100vh; display:flex; justify-content:center; align-items:center; }
+.page { display:none; width:100%; height:100%; justify-content:center; align-items:center; }
+.active { display:flex !important; }
+.main-box { background-color:#1a1a1a; border:1px solid var(--border-color); padding:25px; border-radius:6px; font-size:13px; color:var(--text-light); display:flex; flex-direction:column; min-height:250px; }
+.main-box h2 { text-align:center; }
+.main-box p { text-align:left; padding-left:60px; margin:0 0 10px 0; }
+.main-box img {
+  display: block;       /* remove inline alignment issues */
+  margin: 0 auto 10px;  /* auto left/right to center, 10px bottom */
+  width: 60px;
+  user-select: none;
+}
+.intro-box { width:400px; }
+.login-box { width:400px; }
+.menu-box { width:600px; min-height:400px; padding:20px; }
+.profile-box { width:550px; }
+.mission-box { width:700px; }
+.menu-header { text-align:left; }
+.menu-header p { margin:5px 0; }
+.menu-footer, .menu-left-buttons, .page-footer { display:flex; gap:10px; }
+.menu-footer { justify-content:space-between; align-items:flex-end; margin-top:auto; }
+.page-footer { justify-content:flex-start; margin-top:auto; }
+.main-box img { margin-bottom:10px; width:60px; user-select:none; }
+.main-box .motto { font-size:14px; letter-spacing:1px; margin-bottom:10px; color:var(--text-muted); text-align:center; }
+.footer { font-size:12px; color:#666; border-top:1px solid var(--border-color); padding-top:5px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.footer-note { padding-top:5px; color:#777; text-align:center; }
+hr { border:none; border-top:1px solid var(--border-color); width:80%; margin:20px auto; }
+button { background-color:var(--btn-bg); border:1px solid var(--btn-border); color:#fff; padding:10px 25px; font-family:var(--font-family); font-size:16px; cursor:pointer; border-radius:4px; transition:0.3s; }
+button:hover { background-color:var(--btn-hover-bg); color:var(--btn-hover-color); }
+input[type="text"] { width:85%; padding:10px; margin:12px 0; border-radius:4px; border:1px solid #444; background-color:var(--primary-color); color:#eee; font-family:var(--font-family); font-size:14px; }
+.error { color:var(--error-color); margin-top:12px; font-size:13px; min-height:18px; text-align:center; }
+.mission-info { font-size:15px; line-height:1.5; color:var(--text-light); flex-grow:1; overflow-y:auto; padding-right:5px; margin-bottom:20px; }
+.mission-info p {
+  padding: 2px 64px;
+  border-radius: 6px;
+  margin-bottom: 2px;
+  font-size: 15px;
+}
+.button-row { display:flex; justify-content:space-between; margin-bottom:10px; gap:100px; }
+.agent-description {
+  padding: 10px 15px;       /* Top/Bottom:10px, Left/Right:15px */
+  margin: 5px 0;            /* Space above and below */
+  border-radius: 6px;       /* Rounded corners */
+  color: #ccc;              /* Text color */
+  font-size: 14px;          /* Adjust size */
+  line-height: 1.5;         /* For readability */
+}

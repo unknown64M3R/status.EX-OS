@@ -1,343 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>XX-XX-XX</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-<style>
-:root {
-  --bg:#111; --text-light:#bbb; --text-muted:#666; --btn-bg:#222; --btn-border:#555;
-  --btn-hover-bg:#555; --btn-hover-color:#f33; --border-color:#333; --font-family:'Share Tech Mono', monospace;
-  --error-color:#f33; --success-color:#0f0; --primary-color:#222; --highlight-color:#0f0;
-}
-*, *::after, *::before { box-sizing:border-box; }
-html, body { margin:0; padding:0; background-color:var(--bg); color:#fff; font-family:var(--font-family); overflow:hidden; height:100vh; display:flex; justify-content:center; align-items:center; }
-.page { display:none; width:100%; height:100%; justify-content:center; align-items:center; }
-.active { display:flex !important; }
-.main-box { background-color:#1a1a1a; border:1px solid var(--border-color); padding:25px; border-radius:6px; font-size:13px; color:var(--text-light); display:flex; flex-direction:column; min-height:250px; }
-.main-box h2 { text-align:center; }
-.main-box p { text-align:left; padding-left:60px; margin:0 0 10px 0; }
-.main-box img {
-  display: block;       /* remove inline alignment issues */
-  margin: 0 auto 10px;  /* auto left/right to center, 10px bottom */
-  width: 60px;
-  user-select: none;
-}
-.intro-box { width:400px; }
-.login-box { width:400px; }
-.menu-box { width:600px; min-height:400px; padding:20px; }
-.profile-box { width:550px; }
-.mission-box { width:700px; }
-.menu-header { text-align:left; }
-.menu-header p { margin:5px 0; }
-.menu-footer, .menu-left-buttons, .page-footer { display:flex; gap:10px; }
-.menu-footer { justify-content:space-between; align-items:flex-end; margin-top:auto; }
-.page-footer { justify-content:flex-start; margin-top:auto; }
-.main-box img { margin-bottom:10px; width:60px; user-select:none; }
-.main-box .motto { font-size:14px; letter-spacing:1px; margin-bottom:10px; color:var(--text-muted); text-align:center; }
-.footer { font-size:12px; color:#666; border-top:1px solid var(--border-color); padding-top:5px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
-.footer-note { padding-top:5px; color:#777; text-align:center; }
-hr { border:none; border-top:1px solid var(--border-color); width:80%; margin:20px auto; }
-button { background-color:var(--btn-bg); border:1px solid var(--btn-border); color:#fff; padding:10px 25px; font-family:var(--font-family); font-size:16px; cursor:pointer; border-radius:4px; transition:0.3s; }
-button:hover { background-color:var(--btn-hover-bg); color:var(--btn-hover-color); }
-input[type="text"] { width:85%; padding:10px; margin:12px 0; border-radius:4px; border:1px solid #444; background-color:var(--primary-color); color:#eee; font-family:var(--font-family); font-size:14px; }
-.error { color:var(--error-color); margin-top:12px; font-size:13px; min-height:18px; text-align:center; }
-.mission-info { font-size:15px; line-height:1.5; color:var(--text-light); flex-grow:1; overflow-y:auto; padding-right:5px; margin-bottom:20px; }
-.mission-info p {
-  padding: 2px 64px;
-  border-radius: 6px;
-  margin-bottom: 2px;
-  font-size: 15px;
-}
-.button-row { display:flex; justify-content:space-between; margin-bottom:10px; gap:100px; }
-.agent-description {
-  padding: 10px 15px;       /* Top/Bottom:10px, Left/Right:15px */
-  margin: 5px 0;            /* Space above and below */
-  border-radius: 6px;       /* Rounded corners */
-  color: #ccc;              /* Text color */
-  font-size: 14px;          /* Adjust size */
-  line-height: 1.5;         /* For readability */
-}
-
-</style>
-</head>
-<body>
-
-<!-- INTRO -->
-<div id="introScreen" class="page active">
-  <div class="main-box intro-box" style="align-items:center;">
-    <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-    <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
-    <hr />
-    <div id="typewriter"></div>
-    <div id="introButtons" style="display:none; margin-top:10px;">
-      <button id="proceedBtn">PROCEED</button>
-    </div>
-    <hr />
-    <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
-  </div>
-</div>
-
-<!-- LOGIN -->
-<div id="loginPage" class="page">
-  <div class="main-box login-box" style="align-items:center;">
-    <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-    <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
-    <hr />
-    <input type="text" id="codename" placeholder="Enter Codename" required />
-    <input type="text" id="idNumber" placeholder="Enter ID Number" required />
-    <button id="loginBtn" disabled>LOG IN</button>
-    <div class="error" id="errorMsg"></div>
-    <hr />
-    <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
-  </div>
-</div>
-
-<!-- DASHBOARD -->
-<div id="mainMenu" class="page">
-  <div class="main-box menu-box">
-    <div class="menu-header">
-      <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-      <h2>DASHBOARD</h2>
-      <hr />
-      <p><strong>Codename:</strong> <span id="dashCodename"></span></p>
-      <p><strong>Rank:</strong> <span id="dashRank"></span></p>
-      <p><strong>Field:</strong> <span id="dashField"></span></p>
-      <p><strong>Status:</strong> <span id="dashStatus"></span></p>
-      <p><strong>Description:</strong> <span class="agent-description" id="dashDescription"></span></p>
-    </div>
-    <hr />
-    <div id="agentContainer" style="flex:1; overflow:auto; margin-top:10px;"></div>
-    <div class="menu-footer">
-      <div class="menu-left-buttons">
-        <button id="profileBtn">Profile</button>
-        <button id="missionBtn">Mission</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>XX-XX-XX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- INTRO -->
+    <div id="introScreen" class="page active">
+      <div class="main-box intro-box" style="align-items:center;">
+       <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
+       <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
+       <hr />
+       <div id="typewriter"></div>
+       <div id="introButtons" style="display:none; margin-top:10px;">
+          <button id="proceedBtn">PROCEED</button>
+       </div>
+       <hr />
+       <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
       </div>
-      <button id="logoutMain">Log Out</button>
+    </div>
+  <!-- LOGIN -->
+  <div id="loginPage" class="page">
+    <div class="main-box login-box" style="align-items:center;">
+      <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
+      <div class="motto">EXECUTE IN SILENCE — STRIKE WITH LOGIC</div>
+      <hr />
+      <input type="text" id="codename" placeholder="Enter Codename" required />
+      <input type="text" id="idNumber" placeholder="Enter ID Number" required />
+      <button id="loginBtn" disabled>LOG IN</button>
+      <div class="error" id="errorMsg"></div>
+      <hr />
+     <div class="footer-note">WE ARE EVERYWHERE - THE WATCHER</div>
     </div>
   </div>
-</div>
-
-<!-- PROFILE -->
-<div id="profilePage" class="page">
-  <div class="main-box profile-box">
-    <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-    <h2>PROFILE</h2>
-    <hr />
-    <p><strong>Full Name:</strong> <span id="profileFullName"></span></p>
-    <p><strong>Birth Date:</strong> <span id="profileBirthDate"></span></p>
-    <p><strong>Gender:</strong> <span id="profileGender"></span></p>
-    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-    <p><strong>Contact:</strong> <span id="profileContact"></span></p>
-    <p><strong>Address:</strong> <span id="profileAddress"></span></p>
-    <hr />
-    <div class="menu-left-buttons">
-      <button id="refreshProfile">Refresh</button>
-      <button onclick="showPage('mainMenu')">Back</button>
+  <!-- DASHBOARD -->
+  <div id="mainMenu" class="page">
+    <div class="main-box menu-box">
+      <div class="menu-header">
+        <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
+        <h2>DASHBOARD</h2>
+        <hr />
+        <p><strong>Codename:</strong> <span id="dashCodename"></span></p>
+        <p><strong>Rank:</strong> <span id="dashRank"></span></p>
+        <p><strong>Field:</strong> <span id="dashField"></span></p>
+        <p><strong>Status:</strong> <span id="dashStatus"></span></p>
+        <p><strong>Description:</strong> <span class="agent-description" id="dashDescription"></span></p>
+      </div>
+      <hr />
+      <div id="agentContainer" style="flex:1; overflow:auto; margin-top:10px;"></div>
+      <div class="menu-footer">
+        <div class="menu-left-buttons">
+          <button id="profileBtn">Profile</button>
+          <button id="missionBtn">Mission</button>
+        </div>
+        <button id="logoutMain">Log Out</button>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- MISSION -->
-<div id="missionPage" class="page">
-  <div class="main-box mission-box">
-    <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
-    <h2>MISSION STATUS</h2>
-    <hr />
-    <section class="mission-info" id="missionInfo"><p>Loading mission details...</p></section>
-    <hr />
-    <div class="menu-left-buttons">
-      <button id="refreshMission">Refresh</button>
-      <button onclick="showPage('mainMenu')">Back</button>
+  <!-- PROFILE -->
+  <div id="profilePage" class="page">
+    <div class="main-box profile-box">
+      <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
+      <h2>PROFILE</h2>
+      <hr />
+      <p><strong>Full Name:</strong> <span id="profileFullName"></span></p>
+      <p><strong>Birth Date:</strong> <span id="profileBirthDate"></span></p>
+      <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+      <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+      <p><strong>Contact:</strong> <span id="profileContact"></span></p>
+      <p><strong>Address:</strong> <span id="profileAddress"></span></p>
+      <hr />
+      <div class="menu-left-buttons">
+        <button id="refreshProfile">Refresh</button>
+        <button onclick="showPage('mainMenu')">Back</button>
+      </div>
     </div>
   </div>
-</div>
-
-<script>
-// PAGE SWITCH
-function showPage(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); }
-
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-
-  // Change title based on page
-  switch(id){
-    case 'introScreen':
-      document.title = "Main";
-      break;
-    case 'loginPage':
-      document.title = "Login";
-      break;
-    case 'mainMenu':
-      document.title = `Dashboard — (${codename})`;
-      break;
-    case 'profilePage':
-      document.title = "Profile";
-      break;
-    case 'missionPage':
-      document.title = "Mission Status";
-      break;
-    default:
-      document.title = "EX-OS";
-  }
-}
-
-// TYPEWRITER
-const messages=["Authenticate your identity"];
-const typewriterEl=document.getElementById("typewriter");
-let msgIndex=0;
-function typeMessage(msg, cb){ let i=0; typewriterEl.textContent=""; (function typeChar(){ if(i<msg.length){ typewriterEl.textContent+=msg.charAt(i++); setTimeout(typeChar,50); } else setTimeout(cb,700); })(); }
-(function showNextMessage(){ if(msgIndex<messages.length) typeMessage(messages[msgIndex++], showNextMessage); else document.getElementById("introButtons").style.display="block"; })();
-
-document.getElementById("proceedBtn").onclick=()=>showPage("loginPage");
-
-// FETCH DATA
-let validUsers={}, validProfiles={}, validMissions={};
-async function fetchData(){
-  validUsers = await fetch('https://heuexe.github.io/status.EX-OS/agents.json',{cache:"no-store"}).then(r=>r.json());
-  validProfiles = await fetch('https://heuexe.github.io/status.EX-OS/profiles.json',{cache:"no-store"}).then(r=>r.json());
-  validMissions = await fetch('https://heuexe.github.io/status.EX-OS/mission.json',{cache:"no-store"}).then(r=>r.json());
-  document.getElementById("loginBtn").disabled=false;
-}
-fetchData();
-
-// LOGIN
-document.getElementById("loginBtn").onclick=()=>{
-  const codename=document.getElementById("codename").value.trim();
-  const idNumber=document.getElementById("idNumber").value.trim();
-  const user=validUsers[codename];
-  if(user && user.Id===idNumber && user.Status==="Active"){
-    document.getElementById("dashCodename").textContent=codename;
-    document.getElementById("dashRank").textContent=user.Rank||"N/A";
-    document.getElementById("dashField").textContent=user.Field||"N/A";
-    document.getElementById("dashStatus").textContent=user.Status||"N/A";
-    document.getElementById("dashDescription").textContent = user.Description||"N/A";
-    loadProfileData(codename);
-    loadMissionData(codename);
-    showPage("mainMenu");
-  } else { document.getElementById("errorMsg").textContent="Invalid Codename or ID."; }
-};
-
-// LOAD PROFILE
-function loadProfileData(codename){
-  if(!codename) return;
-  fetch('https://heuexe.github.io/status.EX-OS/profiles.json',{cache:"no-store"})
-    .then(r=>r.json())
-    .then(data=>{
-      const profile=data[codename];
-      if(!profile) return console.warn("Profile not found:",codename);
-      document.getElementById("profileFullName").textContent=profile["Full Name"]||'N/A';
-      document.getElementById("profileBirthDate").textContent=profile["Birth Date"]||'N/A';
-      document.getElementById("profileGender").textContent=profile["Gender"]||'N/A';
-      document.getElementById("profileEmail").textContent=profile["Email"]||'N/A';
-      document.getElementById("profileContact").textContent=profile["Contact"]||'N/A';
-      document.getElementById("profileAddress").textContent=profile["Address"]||'N/A';
-    }).catch(e=>console.error("Error loading profile:",e));
-}
-
-// LOAD MISSION
-async function loadMissionData(codename){
-  if(!codename) return;
-
-  try {
-    // Always fetch live data
-    const [missions, statusColors] = await Promise.all([
-      fetch('https://heuexe.github.io/status.EX-OS/mission.json',{cache:"no-store"}).then(r=>r.json()),
-      fetch('https://heuexe.github.io/status.EX-OS/status.json',{cache:"no-store"}).then(r=>r.json())
-    ]);
-
-    const mission = missions[codename];
-    const colorMap = statusColors.missionStatus || {};
-
-    if(!mission){
-      document.getElementById("missionInfo").innerHTML="<p>No mission found.</p>";
-      return;
-    }
-
-    const statusColor = colorMap[mission.Status] || "#ffffff";
-
-    document.getElementById("missionInfo").innerHTML=`
-      <p><strong>Mission Type:</strong> ${mission.Mission}</p>
-      <p><strong>Task ID:</strong> ${mission.TaskId || 'N/A'}</p>
-      <p><strong>Date Issued:</strong> ${mission.DateIssued || 'N/A'}</p>
-      <p><strong>Status:</strong> <span style="color:${statusColor}; font-weight:bold;">${mission.Status}</span></p>
-      <p><strong>Description:</strong> ${mission.Description}</p>
-    `;
-
-  } catch(e) {
-    console.error("Error loading mission:", e);
-    document.getElementById("missionInfo").innerHTML="<p>Error loading mission data.</p>";
-  }
-}
-
-// Refresh button
-document.getElementById("refreshMission").onclick = () => {
-  const codename = document.getElementById("dashCodename").textContent;
-  if (!codename) return;
-  loadMissionData(codename);
-};
-
-// BUTTONS
-document.getElementById("profileBtn").onclick=()=>{ const codename=document.getElementById("dashCodename").textContent; loadProfileData(codename); showPage("profilePage"); };
-document.getElementById("missionBtn").onclick=()=>{ const codename=document.getElementById("dashCodename").textContent; loadMissionData(codename); showPage("missionPage"); };
-document.getElementById("refreshProfile").onclick=()=>{ const codename=document.getElementById("dashCodename").textContent; loadProfileData(codename); };
-document.getElementById("refreshMission").onclick=()=>{ const codename=document.getElementById("dashCodename").textContent; loadMissionData(codename); };
-
-// LOGOUT
-document.getElementById("logoutMain").onclick = () => {
-  // Clear all user-specific info
-  document.getElementById("codename").value = "";
-  document.getElementById("idNumber").value = "";
-  document.getElementById("errorMsg").textContent = "";
-  
-  document.getElementById("dashCodename").textContent = "";
-  document.getElementById("dashRank").textContent = "";
-  document.getElementById("dashField").textContent = "";
-  document.getElementById("dashStatus").textContent = "";
-  
-  document.getElementById("profileFullName").textContent = "";
-  document.getElementById("profileBirthDate").textContent = "";
-  document.getElementById("profileGender").textContent = "";
-  document.getElementById("profileEmail").textContent = "";
-  document.getElementById("profileContact").textContent = "";
-  document.getElementById("profileAddress").textContent = "";
-  
-  document.getElementById("missionInfo").innerHTML = "<p>Loading mission details...</p>";
-
-  // Show login page
-  showPage("loginPage");
-};
-
-// Page Title
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-
-  // Get current codename from dashboard span
-  const codename = document.getElementById("dashCodename")?.textContent || "";
-
-  // Change title based on page
-  switch(id){
-    case 'introScreen':
-      document.title = "Home";
-      break;
-    case 'loginPage':
-      document.title = "Login";
-      break;
-    case 'mainMenu':
-      document.title = codename ? `Dashboard — ${codename}` : "Dashboard";
-      break;
-    case 'profilePage':
-      document.title = codename ? `Profile — ${codename}` : "Profile";
-      break;
-    case 'missionPage':
-      document.title = codename ? `Mission Status — ${codename}` : "Mission Status";
-      break;
-    default:
-      document.title = "XX-XX-XX";
-  }
-}
-</script>
-</body>
+  <!-- MISSION -->
+  <div id="missionPage" class="page">
+    <div class="main-box mission-box">
+      <img src="https://heuexe.github.io/status.EX-OS/logo.png" alt="Logo" />
+      <h2>MISSION STATUS</h2>
+      <hr />
+      <section class="mission-info" id="missionInfo"><p>Loading mission details...</p></section>
+      <hr />
+      <div class="menu-left-buttons">
+        <button id="refreshMission">Refresh</button>
+        <button onclick="showPage('mainMenu')">Back</button>
+     </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  </body>
 </html>
