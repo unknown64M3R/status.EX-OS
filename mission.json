@@ -12,5 +12,12 @@
     "DateIssued": "08/11/2025",
     "Mission": ["Extraction"],
     "Description": "Wait for further instructions and informations."
+  },
+  "Candidate": {
+    "TaskId": "KSR-NSE-KWN",
+    "Status": "Pending",
+    "DateIssued": "01/24/2026",
+    "Mission": ["Extraction"],
+    "Description": "Wait for further instructions and informations."
   }
 }

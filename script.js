@@ -39,9 +39,9 @@ document.getElementById("proceedBtn").onclick=()=>showPage("loginPage");
 // FETCH DATA
 let validUsers={}, validProfiles={}, validMissions={};
 async function fetchData(){
-  validUsers = await fetch('https://heuexe.github.io/status.EX-OS/agents.json',{cache:"no-store"}).then(r=>r.json());
-  validProfiles = await fetch('https://heuexe.github.io/status.EX-OS/profiles.json',{cache:"no-store"}).then(r=>r.json());
-  validMissions = await fetch('https://heuexe.github.io/status.EX-OS/mission.json',{cache:"no-store"}).then(r=>r.json());
+  validUsers = await fetch('/agents.json',{cache:"no-store"}).then(r=>r.json());
+  validProfiles = await fetch('/profiles.json',{cache:"no-store"}).then(r=>r.json());
+  validMissions = await fetch('/mission.json',{cache:"no-store"}).then(r=>r.json());
   document.getElementById("loginBtn").disabled=false;
 }
 fetchData();
@@ -66,7 +66,7 @@ document.getElementById("loginBtn").onclick=()=>{
 // LOAD PROFILE
 function loadProfileData(codename){
   if(!codename) return;
-  fetch('https://heuexe.github.io/status.EX-OS/profiles.json',{cache:"no-store"})
+  fetch('/profiles.json',{cache:"no-store"})
     .then(r=>r.json())
     .then(data=>{
       const profile=data[codename];
@@ -87,8 +87,8 @@ async function loadMissionData(codename){
   try {
     // Always fetch live data
     const [missions, statusColors] = await Promise.all([
-      fetch('https://heuexe.github.io/status.EX-OS/mission.json',{cache:"no-store"}).then(r=>r.json()),
-      fetch('https://heuexe.github.io/status.EX-OS/status.json',{cache:"no-store"}).then(r=>r.json())
+      fetch('/mission.json',{cache:"no-store"}).then(r=>r.json()),
+      fetch('/status.json',{cache:"no-store"}).then(r=>r.json())
     ]);
 
     const mission = missions[codename];

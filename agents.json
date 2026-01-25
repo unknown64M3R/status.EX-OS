@@ -8,14 +8,14 @@
   },
   "Candidate": {
     "Id": "X-S1-001",
-    "Rank": "Recruit",
+    "Rank": "Training",
     "Field": "Operations",
     "Status": "Active",
     "Description": ""
   },
   "Null": {
     "Id": "X-S1-002",
-    "Rank": "Recruit",
+    "Rank": "Training",
     "Field": "Security",
     "Status": "Active",
     "Description": ""
